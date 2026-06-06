@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+.inp-normal {
+    @apply border-2 border-gray-700 rounded-sm p-3 border-b-5 border-b-gray-600 text-lg
+}
+
+.btn-normal {
+    @apply border-2 p-3 border-gray-700 rounded-sm hover:bg-neutral-700 duration-300 cursor-pointer
+}
