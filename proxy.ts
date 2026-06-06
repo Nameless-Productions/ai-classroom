@@ -7,6 +7,8 @@ import { db } from "./lib/db";
 export default async function proxy(req: NextRequest) {
     const pathname = req.nextUrl.pathname
     const redirectToLogin = NextResponse.redirect(new URL("/login", req.url))
+    const redirectToRoot = NextResponse.redirect(new URL("/", req.url))
+    const returnTo404 = new NextResponse(null, {status: 404})
 
     if(pathname.startsWith("/login") || pathname.startsWith("/_next")) return NextResponse.next();
     if(pathname === "/" && !(await checkIfSetup())) return NextResponse.next()
@@ -29,5 +31,15 @@ export default async function proxy(req: NextRequest) {
 
     res.headers.set("x-username", user.username)
     res.headers.set("x-role", user.role)
-    return res;
+    
+
+    if(pathname.startsWith("/admin/")) {
+        if(user.role === "admin") return res
+        return redirectToRoot
+    }
+    else if(pathname.startsWith("/classes/")){
+        if(user.role === "teacher" || user.role === "student") return res
+        return redirectToRoot
+    }
+    return res
 }
