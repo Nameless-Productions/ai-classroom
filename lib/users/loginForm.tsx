@@ -37,4 +37,6 @@ export async function loginForm(formData: FormData) {
         path: "/",
         sameSite: "lax"
     })
+
+    redirect("/")
 }
