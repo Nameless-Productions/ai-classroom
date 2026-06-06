@@ -10,7 +10,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
     <html lang='en'>
       <body className='flex h-screen overflow-hidden bg-neutral-800 text-neutral-300'>
         {isSettedUp &&
-        <div>
+        <div className='flex h-screen'>
           <Sidebar />
           <main className='flex-1 overflow-y-auto m-2'>
             {children}
