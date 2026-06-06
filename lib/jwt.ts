@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken"
 
 const secret = process.env["SECRET"] || "im missing"
 
-interface UserCookieInfo {
+export interface UserCookieInfo {
     uid: number,
     username: string,
     role: "student" | "admin" | "teacher"
