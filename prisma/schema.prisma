@@ -43,3 +43,11 @@ model Assigment {
   hasQuiz Boolean
   hasFlashcards Boolean
 }
+
+enum ConfOptions {
+  DEFAULT_MODEL
+}
+model Config {
+  key ConfOptions @id
+  value String
+}
