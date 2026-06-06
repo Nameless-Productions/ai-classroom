@@ -28,5 +28,6 @@ export default async function proxy(req: NextRequest) {
     if(!user) return redirectToLogin;
 
     res.headers.set("x-username", user.username)
+    res.headers.set("x-role", user.role)
     return res;
 }
