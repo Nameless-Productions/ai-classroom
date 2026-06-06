@@ -18,9 +18,26 @@ enum Role {
   student
 }
 
+model Enrollment {
+  id String @id @default(cuid())
+  userId Int
+  classId Int
+  user Users @relation(fields: [userId], references: [id])
+  class Classes @relation(fields: [classId], references: [id])
+
+  @@unique([userId, classId])
+}
+
 model Users {
   id Int @id @default(autoincrement())
   username String @unique
   role Role
   password String
+  enrollments Enrollment[]
+}
+
+model Classes {
+  id Int @id @default(autoincrement())
+  name String
+  enrollments Enrollment[]
 }
