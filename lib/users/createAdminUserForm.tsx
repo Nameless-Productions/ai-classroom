@@ -19,8 +19,5 @@ export async function createAdminUserForm(formData: FormData) {
         }
     })
 
-    // wait one second to make sure the user is created
-    setTimeout(() => {
-        redirect("/")
-    }, 1000);
+    redirect("/")
 }
