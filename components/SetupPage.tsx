@@ -1,3 +1,4 @@
+import { createAdminUserForm } from '@/lib/users/createAdminUserForm'
 import React from 'react'
 
 export default function SetupPage() {
@@ -6,12 +7,12 @@ export default function SetupPage() {
     <br />
     <p className='text-lg'>Create admin account:</p>
     <br />
-    <form action="">
-        <input type="text" className="inp-normal mt-2 mb-2" placeholder='Username' />
+    <form action={createAdminUserForm}>
+        <input type="text" name='username' className="inp-normal mt-2 mb-2" placeholder='Username' required />
         <br />
-        <input type="password" className="inp-normal mt-2 mb-2" placeholder='Password' />
+        <input type="password" name='password' className="inp-normal mt-2 mb-2" placeholder='Password' required />
         <br />
-        <input type="submit" className='btn-normal mt-2 w-full' value="Create Account" />
+        <input type="submit" className='btn-normal mt-2 w-full' value="Create Account" required />
     </form>
   </div>)
 }
