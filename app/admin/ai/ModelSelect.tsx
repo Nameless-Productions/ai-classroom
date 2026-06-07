@@ -1,10 +1,11 @@
 "use client"
 
+import { updateModel } from '@/lib/AI/updateModel'
 import React from 'react'
 
 export default function ModelSelect({models, defaultModel}: {models: string[], defaultModel: string}) {
   return (<>
-    <select className='inp-normal mt-3' defaultValue={defaultModel}>
+    <select className='inp-normal mt-3' defaultValue={defaultModel} onChange={(e) => updateModel(e.target.value)}>
         {models.map((m) => (
             <option value={m} key={m}>{m}</option>
         ))}
