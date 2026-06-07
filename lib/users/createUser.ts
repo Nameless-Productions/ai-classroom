@@ -22,7 +22,7 @@ export async function createUserForm(formData: FormData) {
     })
     if(usr) return;
 
-    db.users.create({
+    await db.users.create({
         data: {
             username,
             password: passwordHash,
