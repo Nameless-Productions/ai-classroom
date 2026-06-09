@@ -3,13 +3,13 @@
 import { db } from "../db";
 
 export async function addUsrToClassForm(formData: FormData) {
-    const classId = formData.get("class") as number | null;
+    const classId = formData.get("class") as string | null;
     const username = formData.get("username") as string | null;
-    if(!classId || !username || isNaN(classId)) return
+    if(!classId || !username || isNaN(Number(classId))) return
 
     const classDb = await db.classes.findUnique({
         where: {
-            id: classId
+            id: Number(classId)
         }
     });
     if(!classDb) return
