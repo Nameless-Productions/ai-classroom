@@ -33,11 +33,11 @@ export default async function proxy(req: NextRequest) {
     res.headers.set("x-role", user.role)
     
 
-    if(pathname.startsWith("/admin/")) {
+    if(pathname.startsWith("/admin")) {
         if(user.role === "admin") return res
         return redirectToRoot
     }
-    else if(pathname.startsWith("/classes/")){
+    else if(pathname.startsWith("/classes")){
         if(user.role === "teacher" || user.role === "student") return res
         return redirectToRoot
     }
