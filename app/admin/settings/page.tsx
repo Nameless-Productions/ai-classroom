@@ -1,8 +1,11 @@
+import { addUsrToClassForm } from '@/lib/classes/addUsrToClass'
 import { createClassForm } from '@/lib/classes/createClass'
+import { getClasses } from '@/lib/classes/getClasses'
 import { createUserForm } from '@/lib/users/createUser'
 import React from 'react'
 
-export default function SettingsPage() {
+export default async function SettingsPage() {
+  const classes = await getClasses()
   return (<>
     <p className='font-bold text-lg'>Create account</p>
     <form action={createUserForm}>
@@ -27,6 +30,24 @@ export default function SettingsPage() {
       <input type="text" name='name' placeholder='Class name' className='inp-normal mb-2' required />
       <br />
       <input type="submit" value="Create class" className='btn-normal w-full' />
+    </form>
+
+    <br />
+
+    <form action={addUsrToClassForm}>
+      <p className='font-bold text-lg mb-2'>Add User to class</p>
+
+      <input type="text" name='username' placeholder="User's username" className='inp-normal mb-2' required />
+      <br />
+
+      <select name="class" className='inp-normal w-full mb-2' required>
+        {classes.map((c) => (
+          <option value={c.id}>{c.name}</option>
+        ))}
+      </select>
+
+      <br />
+      <input type="submit" value="Add" className='btn-normal w-full' />
     </form>
   </>)
 }
