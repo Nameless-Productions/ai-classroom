@@ -11,7 +11,7 @@ export async function getUsers(){
             password: false
         },
         orderBy: {
-            id: "desc"
+            id: "asc"
         }
     })
 
