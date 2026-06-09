@@ -18,7 +18,7 @@ export default async function ClassesPage() {
   return (<>
     <p className='text-lg font-bold'>Classes</p>
     <br />
-    <div>
+    <div className='flex flex-wrap gap-5'>
         {classes.map((c) => (
             <ClassCard key={c.id} id={c.id} name={c.name} color={getRandomBgColor()}/>
         ))}
