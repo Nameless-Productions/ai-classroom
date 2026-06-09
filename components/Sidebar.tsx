@@ -10,7 +10,6 @@ export default async function Sidebar() {
         {name: "Info", href: "/admin"},
         {name: "General settings", href: "/admin/settings"},
         {name: "AI settings", href: "/admin/ai"},
-        {name: "Profile settings", href: "/admin/accounts"},
         {name: "Log out", href: "/logout"}
     ].map((p) => (<Link href={p.href} className='text-xl hover:font-bold duration-300' key={p.href}>{p.name}</Link>))
     const teacherPages = [
