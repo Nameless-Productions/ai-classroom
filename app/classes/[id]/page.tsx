@@ -35,7 +35,7 @@ export default async function ClassPage({params}: {params: Promise<{id: string}>
     <p className='font-bold text-lg'>Welcome to class {classDB.name}!</p>
     <br />
 
-    {user.role === "teacher" && <TeacherPage />}
+    {user.role === "teacher" && <TeacherPage classId={classDB.id} />}
     {user.role === "student" && <p>Hello student!</p>}
   </>)
 }

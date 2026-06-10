@@ -40,6 +40,7 @@ model Assigment {
   id Int @id @default(autoincrement())
   name String
   content String
+  classId Int
   hasQuiz Boolean
   hasFlashcards Boolean
 }
