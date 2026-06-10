@@ -27,7 +27,7 @@ function CreateAssigmentForm({closeFunc}: {closeFunc: React.Dispatch<React.SetSt
   }
 
   return (<>
-    <div className='fixed inset-0 z-50 flex items-center justify-center' onClick={() => closeFunc(false)}>
+    <div className='fixed inset-0 z-50 flex items-center justify-center'>
       <div className='p-5 border border-gray-600 rounded-xl bg-gray-800'>
         <input type="text" className='inp-normal mb-2 w-full' placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
         <input type="text" className='inp-normal w-full' placeholder='Prompt to AI, be specific' value={aiPrompt} onChange={(e => setAiPrompt(e.target.value))} />
