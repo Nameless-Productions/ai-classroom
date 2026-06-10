@@ -15,6 +15,14 @@ export default async function ClassPage({params}: {params: Promise<{id: string}>
             username
         }
     })
+    if(!user) return redirect("/login");
+    const userClassEnrollment = await db.enrollment.findMany({
+        where: {
+            classId: Number(id),
+            userId: user.id
+        }
+    })
+    if(userClassEnrollment.length === 0) return redirect("/classes");
 
     const classDB = await db.classes.findUnique({
         where: {
