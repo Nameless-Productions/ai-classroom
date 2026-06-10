@@ -3,6 +3,8 @@ import { headers } from 'next/headers';
 import { redirect } from 'next/navigation'
 import React from 'react'
 import TeacherPage from '@/components/classes/TeacherPage';
+import StudentPage from '@/components/classes/StudentPage';
+import { getAssigments } from '@/lib/classes/getAssigments';
 
 export default async function ClassPage({params}: {params: Promise<{id: string}>}) {
     const id = await (await params).id
@@ -30,12 +32,13 @@ export default async function ClassPage({params}: {params: Promise<{id: string}>
             id: Number(id)
         }
     })
-    if(!classDB) return redirect("/classes")
+    if(!classDB) return redirect("/classes");
+    const assigments = await getAssigments(classDB.id)
   return (<>
     <p className='font-bold text-lg'>Welcome to class {classDB.name}!</p>
     <br />
 
     {user.role === "teacher" && <TeacherPage classId={classDB.id} />}
-    {user.role === "student" && <p>Hello student!</p>}
+    {user.role === "student" && <StudentPage classId={classDB.id} assigments={assigments}/>}
   </>)
 }
