@@ -21,7 +21,6 @@ function CreateAssigmentForm({closeFunc}: {closeFunc: React.Dispatch<React.SetSt
     if(aiPrompt == "") return setResText("Prompt is required");
     if(!title) return setResText("Title required")
     setResText("Loading, this might take a while")
-    setAiPrompt("")
     const res = await createAssigment(aiPrompt);
     if(!res) return setResText("AI did not respond. Please try again");
     setResText(res);
