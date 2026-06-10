@@ -29,13 +29,13 @@ function CreateAssigmentForm() {
     <div className='fixed inset-0 z-50 flex items-center justify-center'>
       <div className='p-5 border border-gray-600 rounded-xl bg-gray-800'>
         
-        <input type="text" className='inp-normal' placeholder='Prompt to AI' value={aiPrompt} onChange={(e => setAiPrompt(e.target.value))} />
+        <input type="text" className='inp-normal w-full' placeholder='Prompt to AI, be specific' value={aiPrompt} onChange={(e => setAiPrompt(e.target.value))} />
         <br />
         <button onClick={onAiSubmit} className='btn-normal mt-2 w-full'>Generate</button>
 
         <br />
 
-        <div className='mt-2'>{resText.replaceAll("\n", "<br/>")}</div>
+        <div className='mt-2 whitespace-pre-wrap'>{resText}</div>
       </div>
     </div>
   </>)
