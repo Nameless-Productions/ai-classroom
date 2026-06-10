@@ -8,11 +8,11 @@ export default function TeacherPage() {
   return (<>
     <button className='btn-normal' onClick={() => setIsAssigmentOpen(true)}>Create assigment</button>
 
-    {isAssigmentOpen && <CreateAssigmentForm />}
+    {isAssigmentOpen && <CreateAssigmentForm closeFunc={setIsAssigmentOpen} />}
   </>)
 }
 
-function CreateAssigmentForm() {
+function CreateAssigmentForm({closeFunc}: {closeFunc: React.Dispatch<React.SetStateAction<boolean>>}) {
   const [aiPrompt, setAiPrompt] = useState("");
   const [resText, setResText] = useState("");
 
@@ -26,7 +26,7 @@ function CreateAssigmentForm() {
   }
 
   return (<>
-    <div className='fixed inset-0 z-50 flex items-center justify-center'>
+    <div className='fixed inset-0 z-50 flex items-center justify-center' onClick={() => closeFunc(false)}>
       <div className='p-5 border border-gray-600 rounded-xl bg-gray-800'>
         
         <input type="text" className='inp-normal w-full' placeholder='Prompt to AI, be specific' value={aiPrompt} onChange={(e => setAiPrompt(e.target.value))} />
