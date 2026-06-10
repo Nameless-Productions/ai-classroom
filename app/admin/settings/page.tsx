@@ -42,7 +42,7 @@ export default async function SettingsPage() {
 
       <select name="class" className='inp-normal w-full mb-2' required>
         {classes.map((c) => (
-          <option value={c.id}>{c.name}</option>
+          <option value={c.id} key={c.id}>{c.name}</option>
         ))}
       </select>
 
