@@ -9,16 +9,13 @@ export default async function Sidebar() {
     const adminPages = [
         {name: "Info", href: "/admin"},
         {name: "General settings", href: "/admin/settings"},
-        {name: "AI settings", href: "/admin/ai"},
-        {name: "Log out", href: "/logout"}
+        {name: "AI settings", href: "/admin/ai"}
     ].map((p) => (<Link href={p.href} className='text-xl hover:font-bold duration-300' key={p.href}>{p.name}</Link>))
     const teacherPages = [
-        {name: "Classes", href: "/classes"},
-        {name: "Log out", href: "/logout"}
+        {name: "Classes", href: "/classes"}
     ].map((p) => (<Link href={p.href} className='text-xl hover:font-bold duration-300' key={p.href}>{p.name}</Link>))
     const studentPages = [
-        {name: "Classes", href: "/classes"},
-        {name: "Log out", href: "/logout"}
+        {name: "Classes", href: "/classes"}
     ].map((p) => (<Link href={p.href} className='text-xl hover:font-bold duration-300' key={p.href}>{p.name}</Link>))
 
     const headerList = await headers()
@@ -33,6 +30,7 @@ export default async function Sidebar() {
         {role === "admin" && adminPages}
         {role === "student" && studentPages}
         {role === "teacher" && teacherPages}
+        {role && <a href='/logout' className='text-xl hover:font-bold duration-300'>Log out</a>}
     </aside>
   )
 }
